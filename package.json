@@ -1,0 +1,25 @@
+{
+  "name": "smart-zip",
+  "version": "0.0.1",
+  "description": "",
+  "main": "smartzip.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JulioGold/smart-zip.git"
+  },
+  "keywords": [
+    "zip"
+  ],
+  "author": "Julio Goldschmidt",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JulioGold/smart-zip/issues"
+  },
+  "homepage": "https://github.com/JulioGold/smart-zip",
+  "dependencies": {
+    "jszip": "^2.5.0"
+  }
+}
