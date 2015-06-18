@@ -7,14 +7,17 @@ Usage
 
 var smartZip = require("smart-zip");
 
-smartZip.zip('app\\','zip.zip',false,function(error){
+// Use to don't put files into .zip, each match won't be inserted into .zip
+var regexExcludes = ['index.html'];
+
+smartZip.zip('app\\','zip.zip',false,regexExcludes,function(error){
 	if (error) {
 		throw error;
 	}
 	console.log('OK');
 });
 
-smartZip.zip('app\\','zipTopLevel.zip',true,function(error){
+smartZip.zip('app\\','zipTopLevel.zip',true,regexExcludes,function(error){
 	if (error) {
 		throw error;
 	}
