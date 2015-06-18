@@ -1,20 +1,23 @@
 # smart-zip
 
-```js
+```javascript
 var smartZip = require("smart-zip");
 
 // Usage
-smartZip.zip('C:\\temp\\node_zip-origem\\app\\','C:\\temp\\node_zip-destino\\zip.zip',false,function(error){
+smartZip.zip('app\\','zip.zip',false,function(error){
 	if (error) {
 		throw error;
 	}
 	console.log('OK');
 });
 
-smartZip.zip('C:\\temp\\node_zip-origem\\app\\','C:\\temp\\node_zip-destino\\zipTopLevel.zip',true,function(error){
+smartZip.zip('app\\','zipTopLevel.zip',true,function(error){
 	if (error) {
 		throw error;
 	}
 	console.log('OK');
 });
+
+smartZip.unzip("app1.zip","app1",function(error) {});
+
 ```

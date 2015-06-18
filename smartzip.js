@@ -1,12 +1,32 @@
 var fs = require("fs");
 var path = require("path");
 var jszip = require("jszip");
+var decompress = require("decompress-zip");
 
 var smartZip = {
-	zip: zip
+	zip: zip,
+	unzip: unzip
 };
 
 module.exports = smartZip;
+
+function unzip(zipPath,directoryPath,done) {
+
+	var name = path.basename(zipPath);
+	var unzipper = new decompress(zipPath);
+
+	unzipper.on("error",function(error) {
+		done(error);
+	});
+	unzipper.on("extract",function() {
+		done();
+	});
+	unzipper.extract({
+		path: directoryPath,
+	});
+
+	return smartZip;
+}
 
 function zip(rootDir, saveTo, generateTopFolder, done) {
 	
