@@ -10,24 +10,6 @@ var smartZip = {
 
 module.exports = smartZip;
 
-function unzip(zipPath,directoryPath,done) {
-
-	var name = path.basename(zipPath);
-	var unzipper = new decompress(zipPath);
-
-	unzipper.on("error",function(error) {
-		done(error);
-	});
-	unzipper.on("extract",function() {
-		done();
-	});
-	unzipper.extract({
-		path: directoryPath,
-	});
-
-	return smartZip;
-}
-
 function zip(rootDir, saveTo, generateTopFolder, done) {
 	
 	var zip = new jszip();
@@ -82,5 +64,24 @@ function zip(rootDir, saveTo, generateTopFolder, done) {
 			});
 		}
 	});
+	
+	return smartZip;
+}
+
+function unzip(zipPath,directoryPath,done) {
+
+	var name = path.basename(zipPath);
+	var unzipper = new decompress(zipPath);
+
+	unzipper.on("error",function(error) {
+		done(error);
+	});
+	unzipper.on("extract",function() {
+		done();
+	});
+	unzipper.extract({
+		path: directoryPath,
+	});
+
 	return smartZip;
 }

@@ -1,9 +1,12 @@
 # smart-zip
 
+Usage
+-----
+
 ```javascript
+
 var smartZip = require("smart-zip");
 
-// Usage
 smartZip.zip('app\\','zip.zip',false,function(error){
 	if (error) {
 		throw error;
