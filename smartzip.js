@@ -1,7 +1,7 @@
 var fs = require("fs");
 var path = require("path");
 var jszip = require("jszip");
-var decompress = require("decompress-zip");
+var unzipLib = require('unzip');
 
 var smartZip = {
 	zip: zip,
@@ -101,17 +101,11 @@ function zip(rootDir, saveTo, generateTopFolder, regexExcludes, done) {
 
 function unzip(zipPath, directoryPath, done) {
 
-	var name = path.basename(zipPath);
-	var unzipper = new decompress(zipPath);
-
-	unzipper.on("error",function(error) {
+	fs.createReadStream(zipPath).pipe(unzipLib.Extract({ path: directoryPath }))
+	.on("error",function(error) {
 		done(error);
-	});
-	unzipper.on("extract",function() {
+	}).on("close",function() {
 		done();
-	});
-	unzipper.extract({
-		path: directoryPath,
 	});
 
 	return smartZip;
