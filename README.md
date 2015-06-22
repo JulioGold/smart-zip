@@ -24,6 +24,11 @@ smartZip.zip('app\\','zipTopLevel.zip',true,regexExcludes,function(error){
 	console.log('OK');
 });
 
-smartZip.unzip("app1.zip","app1",function(error) {});
+smartZip.unzip("app1.zip","app1",function(error) {
+	if (error) {
+		throw error;
+	}
+	console.log('OK');
+});
 
 ```
