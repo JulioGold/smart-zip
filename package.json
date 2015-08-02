@@ -1,6 +1,6 @@
 {
   "name": "smart-zip",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Zip and unzip files in node.js",
   "main": "smartzip.js",
   "scripts": {
@@ -11,7 +11,11 @@
     "url": "https://github.com/JulioGold/smart-zip.git"
   },
   "keywords": [
-    "zip,unzip"
+    "zip",
+    "unzip",
+    "topfolder",
+    "regex",
+    "exclude"
   ],
   "author": "Julio Goldschmidt",
   "license": "MIT",

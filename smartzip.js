@@ -29,7 +29,6 @@ function zip(rootDir, saveTo, generateTopFolder, regexExcludes, done) {
 		fs.stat(fullPath, function(err, stat) {
 			
 			if (err) return callback(err);
-			var dir = path.dirname(fullPath);
 			var file = path.basename(fullPath);
 			
 			if (stat.isDirectory()) {
@@ -97,7 +96,7 @@ function zip(rootDir, saveTo, generateTopFolder, regexExcludes, done) {
 	});
 	
 	return smartZip;
-}
+};
 
 function unzip(zipPath, directoryPath, done) {
 
@@ -109,4 +108,4 @@ function unzip(zipPath, directoryPath, done) {
 	});
 
 	return smartZip;
-}
+};
