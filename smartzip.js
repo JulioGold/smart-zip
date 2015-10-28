@@ -5,7 +5,8 @@ var unzipLib = require('unzip');
 
 var smartZip = {
 	zip: zip,
-	unzip: unzip
+	unzip: unzip,
+	unzipFromStream: unzipFromStream
 };
 
 module.exports = smartZip;
@@ -50,9 +51,7 @@ function zip(rootDir, saveTo, generateTopFolder, regexExcludes, done) {
 								callback(err);
 							}
 						});
-						
 					});
-					
 				});
 				
 			} else {
@@ -72,11 +71,11 @@ function zip(rootDir, saveTo, generateTopFolder, regexExcludes, done) {
 					callback(err);
 				});
 			}
-			
 		});
 	};
 
 	recurse(rootDir, jsZip, !generateTopFolder, regexExcludes, function(error) {
+		
 		if (error) {
 			done(error);
 		} else {
@@ -91,21 +90,32 @@ function zip(rootDir, saveTo, generateTopFolder, regexExcludes, done) {
 			}, function(error) {
 				done(error);
 			});
-			
 		}
 	});
 	
 	return smartZip;
 };
 
-function unzip(zipPath, directoryPath, done) {
+function unzip(zipFilePath, targetPath, done) {
 
-	fs.createReadStream(zipPath).pipe(unzipLib.Extract({ path: directoryPath }))
-	.on("error",function(error) {
-		done(error);
-	}).on("close",function() {
-		done();
-	});
+	var zipStream = fs.createReadStream(zipFilePath);
+	unzipFromStream(zipStream, targetPath, done);
+
+	return smartZip;
+};
+
+function unzipFromStream(zipFileStream, targetPath, done) {
+
+	zipFileStream
+		.pipe(
+			unzipLib.Extract({ path: targetPath })
+		)
+		.on("error",function(error) {
+			done(error);
+		})
+		.on("close",function() {
+			done();
+		});
 
 	return smartZip;
 };
