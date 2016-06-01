@@ -4,7 +4,20 @@ You can zip and unzip files, when you zip you can pass a regular expression to e
 You can choose create top folder or not with the parameter.
   
 Work on windows and ios (not tested on linux but i believe it's work to).  
-
+  
+---  
+  
+- [Usage](#usage)  
+- [Generate zip without top folder](#generatezipwithouttopfolder)  
+- [Generate zip with top folder](#generatezipwithtopfolder)  
+- [Unzip the files](#unzipthefiles)  
+- [Unzip from stream](#unzipfromstream)  
+- [News](#news)  
+  
+---  
+  
+  
+  
 ## Usage  
 
 ```
@@ -79,6 +92,6 @@ smartZip.unzipFromStream(zipFileStream, "app1Stream", function (error) {
 ```  
 
 ### News
-0.0.8 Added support to unzip from stream.  
+- 0.0.8 Added support to unzip from stream.  
 
 Thanks  

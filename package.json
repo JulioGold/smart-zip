@@ -1,31 +1,31 @@
 {
-  "name": "smart-zip",
-  "version": "0.0.8",
-  "description": "Zip and unzip files in node.js",
-  "main": "smartzip.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/JulioGold/smart-zip.git"
-  },
-  "keywords": [
-    "zip",
-    "unzip",
-    "topfolder",
-    "regex",
-    "exclude",
-    "stream"
-  ],
-  "author": "Julio Goldschmidt",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/JulioGold/smart-zip/issues"
-  },
-  "homepage": "https://github.com/JulioGold/smart-zip",
-  "dependencies": {
-    "jszip": "^2.5.0",
-    "unzip": "^0.1.11"
-  }
+    "name": "smart-zip",
+    "version": "0.0.8",
+    "description": "Zip and unzip files in node.js",
+    "main": "smartzip.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/JulioGold/smart-zip.git"
+    },
+    "keywords": [
+        "zip",
+        "unzip",
+        "topfolder",
+        "regex",
+        "exclude",
+        "stream"
+    ],
+    "author": "Julio Goldschmidt",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/JulioGold/smart-zip/issues"
+    },
+    "homepage": "https://github.com/JulioGold/smart-zip",
+    "dependencies": {
+        "jszip": "^2.5.0",
+        "unzip": "^0.1.11"
+    }
 }
