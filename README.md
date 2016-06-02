@@ -8,10 +8,10 @@ Work on windows and ios (not tested on linux but i believe it's work to).
 ---  
   
 - [Usage](#usage)  
-- [Generate zip without top folder](#generatezipwithouttopfolder)  
-- [Generate zip with top folder](#generatezipwithtopfolder)  
-- [Unzip the files](#unzipthefiles)  
-- [Unzip from stream](#unzipfromstream)  
+- [Generate zip without top folder](#generate-zip-without-top-folder)  
+- [Generate zip with top folder](#generate-zip-with-top-folder)  
+- [Unzip the files](#unzip-the-files)  
+- [Unzip from stream](#unzip-from-stream)  
 - [News](#news)  
   
 ---  
