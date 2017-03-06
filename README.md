@@ -93,5 +93,6 @@ smartZip.unzipFromStream(zipFileStream, "app1Stream", function (error) {
 
 ### News
 - 0.0.8 Added support to unzip from stream.  
+- 0.0.9 Added support to ignore folders as well.  
 
 Thanks  

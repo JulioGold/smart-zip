@@ -32,7 +32,6 @@ function zip(rootDir, saveTo, generateTopFolder, regexExcludes, done) {
 			if (err) return callback(err);
 			var file = path.basename(fullPath);
 
-
 			if (stat.isDirectory()) {
 				var excluded = false;
 				var len = regexExcludes.length;
@@ -66,7 +65,6 @@ function zip(rootDir, saveTo, generateTopFolder, regexExcludes, done) {
 				else {
 					callback(err);
 				}
-
 
 			} else {
 

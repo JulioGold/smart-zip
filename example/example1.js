@@ -1,7 +1,7 @@
 var smartZip = require("../smartzip.js");
 
 // Use to don't put files into .zip, each match won't be inserted into .zip
-var regexExcludes = ['index.html'];
+var regexExcludes = ['index.html', 'folder2'];
 
 // Generate zip without top folder
 smartZip.zip('app\\', 'zip.zip', false, regexExcludes, function (error) {
