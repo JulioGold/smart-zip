@@ -12,7 +12,7 @@ var smartZip = {
 module.exports = smartZip;
 
 function zip(rootDir, saveTo, generateTopFolder, regexExcludes, done) {
-	
+
 	var jsZip = new jszip();
 	rootDir = path.resolve(rootDir);
 
@@ -26,36 +26,14 @@ function zip(rootDir, saveTo, generateTopFolder, regexExcludes, done) {
 	}
 
 	function recurse(fullPath, parentZip, first, regexExcludes, callback) {
-		
+
 		fs.stat(fullPath, function(err, stat) {
-			
+
 			if (err) return callback(err);
 			var file = path.basename(fullPath);
-			
+
+
 			if (stat.isDirectory()) {
-				
-				var folderZip = first ? parentZip : parentZip.folder(file);
-				
-				fs.readdir(fullPath, function(err, files) {
-					
-					if (err) { return callback(err); }
-					if (!files.length) { return callback(); }
-					var count = files.length;
-					
-					files.forEach(function(file) {
-						
-						var filePath = path.resolve(fullPath, file);
-						
-						recurse(filePath, folderZip, false, regexExcludes, function(err) {
-							if (!--count) {
-								callback(err);
-							}
-						});
-					});
-				});
-				
-			} else {
-				
 				var excluded = false;
 				var len = regexExcludes.length;
 				for (var i = 0; i < len; i++) {
@@ -63,7 +41,43 @@ function zip(rootDir, saveTo, generateTopFolder, regexExcludes, done) {
 						excluded = true;
 					}
 				}
-				
+
+				if (excluded === false) {
+					var folderZip = first ? parentZip : parentZip.folder(file);
+
+					fs.readdir(fullPath, function(err, files) {
+
+						if (err) { return callback(err); }
+						if (!files.length) { return callback(); }
+						var count = files.length;
+
+						files.forEach(function(file) {
+
+							var filePath = path.resolve(fullPath, file);
+
+							recurse(filePath, folderZip, false, regexExcludes, function(err) {
+								if (!--count) {
+									callback(err);
+								}
+							});
+						});
+					});
+				}
+				else {
+					callback(err);
+				}
+
+
+			} else {
+
+				var excluded = false;
+				var len = regexExcludes.length;
+				for (var i = 0; i < len; i++) {
+					if (file.match(regexExcludes[i])) {
+						excluded = true;
+					}
+				}
+
 				fs.readFile(fullPath, function(err, data) {
 					if (excluded === false) {
 						parentZip.file(file, data);
@@ -75,7 +89,7 @@ function zip(rootDir, saveTo, generateTopFolder, regexExcludes, done) {
 	};
 
 	recurse(rootDir, jsZip, !generateTopFolder, regexExcludes, function(error) {
-		
+
 		if (error) {
 			done(error);
 		} else {
@@ -92,7 +106,7 @@ function zip(rootDir, saveTo, generateTopFolder, regexExcludes, done) {
 			});
 		}
 	});
-	
+
 	return smartZip;
 };
 
